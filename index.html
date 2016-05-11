@@ -1,0 +1,198 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ait project</title>
+    <style>
+#div1 {width:500px;height:100px;padding:10px;border:1px solid #aaaaaa;}
+        #downloadLnk {
+	    clear:both;
+	    float:left;
+	    cursor:pointer;
+	    color:#ccc;
+	    padding:3px;
+	}
+	#downloadLnk:hover {
+        color: #gggggg;
+	}
+        ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+</style>
+    <script type="text/javascript">
+      function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    var MAX_HEIGHT = 250;
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+   <!--ev.target.appendChild(document.getElementById(data));-->
+
+
+    var c=document.getElementById("div1");
+    var ctx=c.getContext("2d");
+    ctx.globalCompositeOperation = "source-over";
+    var img=document.getElementById(data);
+
+
+    ctx.drawImage(img,1,1,150,150);
+
+
+}
+function clear(){
+}
+function my() {
+          var c = document.getElementById("div1");
+          var link = document.getElementById('downloadLnk');
+          link.innerHTML = 'download image';
+          link.addEventListener('click', function (ev) {
+              link.href = c.toDataURL();
+              link.download = "frame.png";
+          }, false);
+      }
+
+
+
+      </script>
+</head>
+<body onload="hideall()">
+<nav>
+    <ul>
+  <li><a href="index.html">home</a></li>
+  <li><a href="/home/ankit/aitproject/index.html">magic_wand_tool</a></li>
+
+</ul>
+
+
+</nav>
+</br>
+    <div id="sidebar_left">
+
+		<!--<div id="menu_left_container">
+			<h1>tools</h1>
+
+
+
+		</div>
+        -->
+
+	</div>
+
+    <div id="canvas_wrapper" style="border: double">
+        <canvas id="div1"  ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 80% ;width: 80%"></canvas>
+   <!-- <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>-->
+        <a id="downloadLnk" onclick="my()">Download as image</a>
+        </div>
+    <br>
+
+
+    <div id="back" style="border: 2px solid black;">
+		<input type="button" value="frames" onclick="toggle_visibility('frames');" />
+		<input type="button" value="background" onclick="toggle_visibility('background');" />
+        <input type="button" value="characters" onclick="toggle_visibility('character');" />
+        </br>
+        </br>
+
+			<div id="background">
+
+			<img id="drag3" draggable="true"  ondragstart="drag(event)"  src="res/background.jpg" alt="The Pulpit Rock" width="150px" height="150px">
+
+                <img id="drag6" draggable="true"  ondragstart="drag(event)"  src="res/back1.jpg" alt="The Pulpit Rock" width="150px" height="150px">
+                <img id="drag7" draggable="true"  ondragstart="drag(event)"  src="res/back2.jpg" alt="The Pulpit Rock" width="150px" height="150px">
+                <img id="drag8" draggable="true"  ondragstart="drag(event)"  src="res/back3.jpg" alt="The Pulpit Rock" width="150px" height="150px">
+
+			</div>
+        <div id="frames" style="width:30%">
+
+
+
+
+
+
+			<img id="drag2" src="res/frame2.png" draggable="true"  ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+            <img id = "drag11" src="res/framemagic.png" draggable="true" ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+			<img id="drag12" src="res/framemagic2.png" draggable="true"  ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+            <img id = "drag13" src="res/framemagic3.png" draggable="true" ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+
+
+
+			 </div>
+         <div id="character" style="width:30%">
+
+
+
+
+
+
+			<img id="drag21" src="res/char3magic.png" draggable="true"  ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+            <img id = "drag22" src="res/char4magic.png" draggable="true" ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+			<img id="drag23" src="res/char5magic.png" draggable="true"  ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+            <img id = "drag24" src="res/charmagic.png" draggable="true" ondragstart="drag(event)"  alt="The Pulpit Rock" width="150px" height="150px">
+            <img id="drag4" draggable="true"  ondragstart="drag(event)"  src="res/t1.png" alt="The Pulpit Rock" width="150px" height="150px">
+
+
+
+			 </div>
+
+
+	</div>
+
+
+
+
+<script type="text/javascript">
+ function toggle_visibility(id) {
+
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+   }
+	function hideall() {
+
+		var e = document.getElementById('frames');
+          e.style.display = 'none';
+        var e = document.getElementById('character');
+          e.style.display = 'none';
+		var e = document.getElementById('background');
+          e.style.display = 'none';
+
+   }
+
+</script>
+
+</body>
+</html>
